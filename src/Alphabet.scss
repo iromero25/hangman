@@ -1,0 +1,12 @@
+.alphabet {
+  display: grid;
+  grid-template-columns: repeat(10, auto);
+  grid-gap: 3px;
+
+  button {
+    border: solid 1px green;
+    &:disabled {
+      background-color: lightgray;
+    }
+  }
+}
