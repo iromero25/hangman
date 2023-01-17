@@ -19,7 +19,7 @@ const Alphabet: React.FC<Props> = ({
   const firstLetter = "a".charCodeAt(0);
   const lastLetter = "z".charCodeAt(0);
 
-  let charArray: string[] = [];
+  const charArray: string[] = [];
   for (let letter = firstLetter; letter <= lastLetter; letter++) {
     charArray.push(String.fromCharCode(letter));
   }

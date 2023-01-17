@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect, useMemo } from "react";
 import "./Board.scss";
 
 interface Props {
@@ -22,15 +22,11 @@ const Board: React.FC<Props> = ({ chars, word, tries }) => {
     // just check a single char in the word that is not in the char array
     // to define the status of the game:
     const uncompleteWord = word.split("").some((char) => !chars.includes(char));
-    if (uncompleteWord) {
-      // setStatus("in Progress"); // this is not needed!
-      return;
-    }
+    if (uncompleteWord) return;
     setStatus("you won!");
-  }, [chars]); // configure ts-lint? if no dependencies are provided?
+  }, [chars, tries, word]);
 
-  const getStatusColor = React.useMemo(() => {
-    console.log("invoking getStatusColor");
+  const getStatusColor = useMemo(() => {
     switch (status) {
       case "you won!":
         return "green";
@@ -61,4 +57,4 @@ const Board: React.FC<Props> = ({ chars, word, tries }) => {
   );
 };
 
-export default React.memo(Board);
+export default Board;
