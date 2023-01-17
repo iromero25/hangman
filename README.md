@@ -18,3 +18,4 @@ To run this project locally, clone this repository into the local environment, t
 This project is incorporating the following features that might come in handy for real-life projects:
 
 - **.prettierrc** config file to override any local prettier configurations. This helps maintaining the same formatting across the development team.
+- **.eslintrc.json** contains this project's linting configuration, also enforced by VSCode's ESLint plugin
