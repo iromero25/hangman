@@ -1,21 +1,16 @@
-import React, { Dispatch, SetStateAction } from "react";
+import React, { Dispatch, SetStateAction, useContext } from "react";
+
+import { CharsContext } from "./Context";
 import "./Alphabet.scss";
 
 interface Props {
-  chars: string[];
   enabled: boolean;
   word: string;
-  setChars: Dispatch<SetStateAction<string[]>>;
   setTries: Dispatch<SetStateAction<number>>;
 }
 
-const Alphabet: React.FC<Props> = ({
-  chars,
-  enabled,
-  word,
-  setChars,
-  setTries,
-}) => {
+const Alphabet: React.FC<Props> = ({ enabled, word, setTries }) => {
+  const { chars, setChars } = useContext(CharsContext);
   const firstLetter = "a".charCodeAt(0);
   const lastLetter = "z".charCodeAt(0);
 

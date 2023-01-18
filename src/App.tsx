@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react";
-import Alphabet from "./Alphabet";
+
 import Board from "./Board";
+import Alphabet from "./Alphabet";
 
 const App = () => {
-  // what if I wanted to make word and chars available to the Board and Alphabet components only?
-  // Can I use context?
   const [word, setWord] = useState(""); // this doesn't need to be reset! It does!
   const [error, setError] = useState("");
-  const [chars, setChars] = useState<string[]>([]);
   const [tries, setTries] = useState(0);
 
   const fetchWord = () =>
@@ -35,17 +33,11 @@ const App = () => {
     <>
       {!error ? (
         <>
-          <Board chars={chars} word={word} tries={tries} />
-          <Alphabet
-            chars={chars}
-            word={word}
-            enabled={tries < 10}
-            setChars={setChars}
-            setTries={setTries}
-          />
+          <Board word={word} tries={tries} />
+          <Alphabet word={word} enabled={tries < 10} setTries={setTries} />
         </>
       ) : (
-        <>An Error has ocurred: {error}</>
+        <h2>An error has ocurred: {error}</h2>
       )}
     </>
   );

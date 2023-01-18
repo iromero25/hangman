@@ -1,18 +1,19 @@
-import { useState, useEffect, useMemo } from "react";
+import { useState, useEffect, useMemo, useContext } from "react";
+
+import { CharsContext } from "./Context";
 import "./Board.scss";
 
 interface Props {
   word: string;
-  chars: string[];
   tries: number;
 }
 
 type GameStates = "in Progress" | "you won!" | "you lost";
 
-const Board: React.FC<Props> = ({ chars, word, tries }) => {
+const Board: React.FC<Props> = ({ word, tries }) => {
+  const { chars } = useContext(CharsContext);
   const [status, setStatus] = useState<GameStates>("in Progress");
 
-  // maybe we can use another hook like useCallback or useMemo?
   useEffect(() => {
     if (chars.length === 0) return;
     if (tries === 10) {
