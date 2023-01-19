@@ -17,6 +17,7 @@
 
 body {
   margin: 0;
+  margin-left: 10px;
   display: flex;
   place-items: center;
   min-width: 350px;

@@ -47,13 +47,6 @@ const Board: React.FC<Props> = ({ word, tries }) => {
         Game status: <span className={getStatusColor}>{status}</span>
       </div>
       <div>Remaining tries: {10 - tries}</div>
-      <div>
-        {word.split("").map((char, index) => (
-          <button key={char + index} className="wordBox">
-            {chars.includes(char) ? char : "?"}
-          </button>
-        ))}
-      </div>
     </div>
   );
 };

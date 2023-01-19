@@ -4,7 +4,9 @@ import Board from "./Board";
 import Alphabet from "./Alphabet";
 
 const App = () => {
-  const [word, setWord] = useState(""); // this doesn't need to be reset! It does!
+  // word is reset when the async fetch finishes, this
+  // is why the App component is rendered twice
+  const [word, setWord] = useState("");
   const [error, setError] = useState("");
   const [tries, setTries] = useState(0);
 
@@ -26,6 +28,10 @@ const App = () => {
   useEffect(() => {
     fetchWord();
   }, []);
+
+  // ToDo: there's a bug in my code: we can keep on selecting the alphabet even
+  // after finishing, which brings unexpected results.
+  // I would like to add testing to my project and test for this case.
 
   console.log("App is rendered");
 

@@ -10,3 +10,16 @@
     }
   }
 }
+
+$wordBoxDimension: 45px;
+.wordBox button {
+  width: $wordBoxDimension;
+  height: $wordBoxDimension;
+  border-radius: 0%;
+  border-bottom: solid black 2px;
+  background-color: inherit;
+  margin-right: 4px;
+  margin-bottom: 10px;
+  font-weight: bold;
+  text-transform: capitalize;
+}
