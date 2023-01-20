@@ -1,17 +1,16 @@
-import React, { useState, useEffect, useMemo, useContext } from "react";
+import React, { useState, useEffect, useMemo } from "react";
 
-import { CharsContext } from "./Context";
 import "./Board.scss";
 
 interface Props {
   word: string;
+  chars: string[];
   tries: number;
 }
 
 type GameStates = "in Progress" | "you won!" | "you lost";
 
-const Board: React.FC<Props> = ({ word, tries }) => {
-  const { chars } = useContext(CharsContext);
+const Board: React.FC<Props> = ({ word, chars, tries }) => {
   const [status, setStatus] = useState<GameStates>("in Progress");
 
   useEffect(() => {

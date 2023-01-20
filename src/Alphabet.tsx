@@ -1,16 +1,22 @@
-import React, { Dispatch, SetStateAction, useContext } from "react";
+import React, { Dispatch, SetStateAction } from "react";
 
-import { CharsContext } from "./Context";
 import "./Alphabet.scss";
 
 interface Props {
-  enabled: boolean;
   word: string;
+  chars: string[];
+  enabled: boolean;
   setTries: Dispatch<SetStateAction<number>>;
+  setChars: Dispatch<SetStateAction<string[]>>;
 }
 
-const Alphabet: React.FC<Props> = ({ enabled, word, setTries }) => {
-  const { chars, setChars } = useContext(CharsContext);
+const Alphabet: React.FC<Props> = ({
+  word,
+  chars,
+  enabled,
+  setTries,
+  setChars,
+}) => {
   const firstLetter = "a".charCodeAt(0);
   const lastLetter = "z".charCodeAt(0);
 
@@ -23,7 +29,7 @@ const Alphabet: React.FC<Props> = ({ enabled, word, setTries }) => {
 
   return (
     <div>
-      <div id="wordBox">
+      <div className="wordBox">
         {word.split("").map((char, index) => (
           <strong role="strong" key={char + index}>
             {chars.includes(char) ? char : ""}
