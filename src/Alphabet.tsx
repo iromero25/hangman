@@ -23,11 +23,11 @@ const Alphabet: React.FC<Props> = ({ enabled, word, setTries }) => {
 
   return (
     <div>
-      <div className="wordBox">
+      <div id="wordBox">
         {word.split("").map((char, index) => (
-          <button key={char + index}>
-            {chars.includes(char) ? char : "?"}
-          </button>
+          <strong role="strong" key={char + index}>
+            {chars.includes(char) ? char : ""}
+          </strong>
         ))}
       </div>
       <div className="alphabet">

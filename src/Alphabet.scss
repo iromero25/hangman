@@ -11,15 +11,20 @@
   }
 }
 
-$wordBoxDimension: 45px;
-.wordBox button {
-  width: $wordBoxDimension;
-  height: $wordBoxDimension;
-  border-radius: 0%;
-  border-bottom: solid black 2px;
-  background-color: inherit;
-  margin-right: 4px;
+$wordBoxDimension: 40px;
+
+.wordBox {
   margin-bottom: 10px;
-  font-weight: bold;
-  text-transform: capitalize;
+
+  strong {
+    display: inline-block;
+    width: $wordBoxDimension;
+    height: $wordBoxDimension;
+    line-height: $wordBoxDimension; // this centers text vertically
+    margin-right: 4px;
+    text-align: center;
+    background-color: inherit;
+    text-transform: capitalize;
+    border-bottom: solid black 2px;
+  }
 }

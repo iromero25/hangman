@@ -1,4 +1,4 @@
-import { useState, useEffect, useMemo, useContext } from "react";
+import React, { useState, useEffect, useMemo, useContext } from "react";
 
 import { CharsContext } from "./Context";
 import "./Board.scss";
