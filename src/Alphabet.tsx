@@ -28,7 +28,7 @@ const Alphabet: React.FC<Props> = ({
       <div className={`wordBox ${statusColor}`}>
         {word.split("").map((char, index) => (
           <strong role="strong" key={char + index}>
-            {chars.includes(char) ? char : ""}
+            {!enabled || chars.includes(char) ? char : ""}
           </strong>
         ))}
       </div>
