@@ -1,5 +1,12 @@
 .board {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   margin-bottom: 10px;
+
+  img {
+    width: 200px;
+  }
   .red {
     color: red;
   }

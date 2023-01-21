@@ -24,8 +24,8 @@ const Alphabet: React.FC<Props> = ({
   console.log("Alphabet is rendered");
 
   return (
-    <div>
-      <div className={`wordBox ${statusColor}`}>
+    <>
+      <div className={`wordBoxContainer ${statusColor}`}>
         {word.split("").map((char, index) => (
           <strong role="strong" key={char + index}>
             {!enabled || chars.includes(char) ? char : ""}
@@ -54,7 +54,7 @@ const Alphabet: React.FC<Props> = ({
           );
         })}
       </div>
-    </div>
+    </>
   );
 };
 

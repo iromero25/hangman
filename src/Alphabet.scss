@@ -1,7 +1,11 @@
 .alphabet {
+  width: 100%;
   display: grid;
   grid-template-columns: repeat(10, auto);
   grid-gap: 3px;
+  justify-content: center;
+  min-width: inherit;
+  background-color: inherit;
 
   button {
     border: solid 1px green;
@@ -11,18 +15,20 @@
   }
 }
 
-$wordBoxDimension: 40px;
+$wordBoxDimension: 36px;
 
-.wordBox {
+.wordBoxContainer {
   display: flex;
-  margin-bottom: 10px;
+  justify-content: center;
+  margin: 10px;
+  min-width: inherit;
 
   strong {
     display: inline-block;
     width: $wordBoxDimension;
     height: $wordBoxDimension;
     line-height: $wordBoxDimension; // this centers text vertically
-    margin-right: 4px;
+    margin: 0 4px;
     text-align: center;
     background-color: inherit;
     text-transform: capitalize;
