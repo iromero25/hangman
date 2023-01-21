@@ -2,6 +2,7 @@ import React, { useState, useEffect, useMemo } from "react";
 
 import Board from "./Board";
 import Alphabet from "./Alphabet";
+import { GameStates } from "./types";
 
 const App = () => {
   // word is reset when the async fetch finishes, this
@@ -10,6 +11,7 @@ const App = () => {
   const [error, setError] = useState("");
   const [tries, setTries] = useState(0);
   const [chars, setChars] = useState<string[]>([]);
+  const [status, setStatus] = useState<GameStates>("in Progress");
 
   const fetchWord = () =>
     fetch("https://random-word-api.herokuapp.com/word")
@@ -37,9 +39,26 @@ const App = () => {
     fetchWord();
   }, []);
 
-  // ToDo: there's a bug in my code: we can keep on selecting the alphabet even
-  // after finishing, which brings unexpected results.
-  // I would like to add testing to my project and test for this case.
+  useEffect(() => {
+    if (chars.length === 0) return;
+    if (tries === 10) {
+      setStatus("you lost");
+      return;
+    }
+    if (uncompleteWord) return;
+    setStatus("you won!");
+  }, [chars, tries, uncompleteWord]);
+
+  const statusColor = useMemo(() => {
+    switch (status) {
+      case "you won!":
+        return "green";
+      case "you lost":
+        return "red";
+      default:
+        return "black";
+    }
+  }, [status]);
 
   console.log("App is rendered: ");
 
@@ -47,11 +66,12 @@ const App = () => {
     <>
       {!error ? (
         <>
-          <Board word={word} chars={chars} tries={tries} />
+          <Board status={status} tries={tries} statusColor={statusColor} />
           <Alphabet
             word={word}
             chars={chars}
             enabled={tries < 10 && uncompleteWord}
+            statusColor={statusColor}
             setTries={setTries}
             setChars={setChars}
           />

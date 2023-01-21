@@ -1,35 +1,31 @@
 import React, { Dispatch, SetStateAction } from "react";
-
+import { createAlphabetArray } from "./utils";
 import "./Alphabet.scss";
 
 interface Props {
   word: string;
   chars: string[];
   enabled: boolean;
+  statusColor: string;
   setTries: Dispatch<SetStateAction<number>>;
   setChars: Dispatch<SetStateAction<string[]>>;
 }
+
+const charArray = createAlphabetArray();
 
 const Alphabet: React.FC<Props> = ({
   word,
   chars,
   enabled,
+  statusColor,
   setTries,
   setChars,
 }) => {
-  const firstLetter = "a".charCodeAt(0);
-  const lastLetter = "z".charCodeAt(0);
-
-  const charArray: string[] = [];
-  for (let letter = firstLetter; letter <= lastLetter; letter++) {
-    charArray.push(String.fromCharCode(letter));
-  }
-
   console.log("Alphabet is rendered");
 
   return (
     <div>
-      <div className="wordBox">
+      <div className={`wordBox ${statusColor}`}>
         {word.split("").map((char, index) => (
           <strong role="strong" key={char + index}>
             {chars.includes(char) ? char : ""}
